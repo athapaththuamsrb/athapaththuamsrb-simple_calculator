@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<title>calculater</title>
+		<style type="text/css">
+			body{
+				background:black;}
+			h1{ 
+				text-align:center;
+				color:red;}	
+			#frame{
+				border-radius:10px;
+				left:670px;
+				position:relative;
+				width:180px;
+				height:200px;
+				background:#43464B;}	
+			#display{
+				top:10px;
+				left:15px;
+				text-align:right;
+				position:relative;
+				width:150px;
+				height:20px;
+				background:#FFFFF0;}	
+			#keys{
+				text-align:center;}
+			#number_key{
+				width:30px;
+				border-radius:10px;
+				background:black;
+				color:white;
+				}	
+			#opertion{
+				width:30px;
+				border-radius:10px;
+				background:red;
+				color:black;
+				}
+				
+			#clear{
+				width:30px;
+				border-radius:10px;
+				background:blue;
+				color:white;
+				}	
+			#equal{
+				width:30px;
+				border-radius:10px;
+				background:pink;
+				color:white;
+				}	
+		</style>
+	</head>
+	<body>
+		<h1>calculater</h1>
+		<div id="frame">
+			<div id="display">0</div>
+			<div id="keys">
+				<br>
+				<button id="number_key" onclick="key(9)">9</button>
+				<button id="number_key" onclick="key(8)">8</button>
+				<button id="number_key" onclick="key(7)">7</button>
+				<button	id="opertion" onclick="oper('+')">+</button>
+				<br>
+				<button id="number_key" onclick="key(6)">6</button>
+				<button id="number_key" onclick="key(5)">5</button>
+				<button id="number_key" onclick="key(4)">4</button>
+				<button	id="opertion" onclick="oper('-')">-</button>
+				<br>
+				<button id="number_key" onclick="key(3)">3</button>
+				<button id="number_key" onclick="key(2)">2</button>
+				<button id="number_key" onclick="key(1)">1</button>
+				<button	id="opertion" onclick="oper('*')">*</button>
+				<br>
+				<button id="clear" onclick="clearKey()">C</button>
+				<button id="number_key" onclick="key(0)">0</button>
+				<button id="equal" onclick="equalKey()">=</button>
+				<button	id="opertion" onclick="oper('/')">/</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var number_1;
+			var number_2;
+			var opertion;
+			var anser;
+			var len=0;
+			function key(num){
+				if(document.getElementById("display").innerHTML!=0){
+					document.getElementById("display").innerHTML=document.getElementById("display").innerHTML+num;
+					}
+				else{
+					document.getElementById("display").innerHTML=num;
+					}	
+				}
+			function oper(op){
+				opertion=op;
+				if(document.getElementById("display").innerHTML!=0){
+					number_1=Number(document.getElementById("display").innerHTML);
+					document.getElementById("display").innerHTML=document.getElementById("display").innerHTML+" "+opertion+" ";
+					len=document.getElementById("display").innerHTML.length;
+					
+					}
+				}	
+			function clearKey(){
+				document.getElementById("display").innerHTML=0;
+				}	
+			function equalKey(){
+				number_2="";
+				for(var i=len;i<document.getElementById("display").innerHTML.length;i++){
+					number_2+=document.getElementById("display").innerHTML[i];
+					}
+					number_2=Number(number_2);
+				switch(opertion){
+					case "+":
+							anser=number_1+number_2;
+							document.getElementById("display").innerHTML=anser;
+							break;
+					case "*":
+							anser=number_1*number_2;
+							document.getElementById("display").innerHTML=anser;	
+							break;
+					case "/":
+							anser=Number(number_1/number_2);
+							document.getElementById("display").innerHTML=anser;
+							break;
+					default:
+							anser=number_1-number_2;
+							document.getElementById("display").innerHTML=anser;		
+									}	
+					
+				}	
+				
+		</script>
+	</body>
+</html>
